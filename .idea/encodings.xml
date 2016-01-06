@@ -5,6 +5,8 @@
     <file url="file://$PROJECT_DIR$/../TestAPI/local.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../TestSpot/gradle.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../TestSpot/local.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../testgit/gradle.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../testgit/local.properties" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
