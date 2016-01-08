@@ -45,8 +45,12 @@ import retrofit.client.Response;
 public class MainActivity extends Activity implements
         PlayerNotificationCallback, ConnectionStateCallback {
 
+    // Larrmoej
     private static final String CLIENT_SECRET ="c11029a26e094395a6e60e8d22050663";
     private static final String CLIENT_ID = "f18769af7d9446449f50b343023cc487";
+    // Zacke
+    //private static final String CLIENT_ID = "28280d98f8124d5699a0a27537e6e2f8";
+    //private static final String CLIENT_SECRET = "4d4ab16f86f949dcbb8b860797f3e300";
     private static final String REDIRECT_URI = "moodify-api-spotify-login://callback";
     private static final int REQUEST_CODE = 1337;
     private SpotifyPlayList playList = new SpotifyPlayList();
@@ -59,7 +63,6 @@ public class MainActivity extends Activity implements
     private int songNumber = 0;
     private UserInput userInput = new UserInput("yolo");
     private String input = "";
-
 
     private Player mPlayer;
     @Override
@@ -94,8 +97,6 @@ public class MainActivity extends Activity implements
             @Override
             public void onClick(View v) {
                 userInput.setText(input);
-
-
             }
         });
 
@@ -119,7 +120,6 @@ public class MainActivity extends Activity implements
                     api.setAccessToken(response.getAccessToken());
                     final Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
                     SpotifyService spotify = api.getService();
-
 
                     /*Soft playlist*/
                         spotify.getPlaylist("fanos", "1mCf6v2iL6pattoFszfv6n", new Callback<Playlist>() {
@@ -211,27 +211,27 @@ public class MainActivity extends Activity implements
 
     @Override
     public void onLoggedIn() {
-        Log.d("MainActivity", "User logged in");
+        Log.e("MainActivity", "User logged in");
     }
 
     @Override
     public void onLoggedOut() {
-        Log.d("MainActivity", "User logged out");
+        Log.e("MainActivity", "User logged out");
     }
 
     @Override
     public void onLoginFailed(Throwable error) {
-        Log.d("MainActivity", "Login failed");
+        Log.e("MainActivity", "Login failed");
     }
 
     @Override
     public void onTemporaryError() {
-        Log.d("MainActivity", "Temporary error occurred");
+        Log.e("MainActivity", "Temporary error occurred");
     }
 
     @Override
     public void onConnectionMessage(String message) {
-        Log.d("MainActivity", "Received connection message: " + message);
+        Log.e("MainActivity", "Received connection message: " + message);
     }
 
     @Override
