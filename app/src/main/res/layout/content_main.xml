@@ -63,4 +63,14 @@
         android:layout_below="@+id/textView4"
         android:layout_toStartOf="@+id/editText" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/loginButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginBottom="44dp"
+        android:clickable="true" />
+
 </RelativeLayout>

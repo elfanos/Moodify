@@ -73,9 +73,11 @@ public class MainActivity extends Activity implements
         textFieldPlayListName = (TextView) findViewById(R.id.textView3);
         TextView textField = (TextView) findViewById(R.id.textView4);
         Button playListButton = (Button) findViewById(R.id.button);
+        Button loginButton = (Button) findViewById(R.id.loginButton);
         EditText playListText = (EditText) findViewById(R.id.editText);
         textField.setText("Choose playlist");
         textFieldTrackName.setText("Song playing");
+
 
         playListText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -99,14 +101,36 @@ public class MainActivity extends Activity implements
                 userInput.setText(input);
             }
         });
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("msg", "LOGGAR IN MANNEN");
+                AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
+                        AuthenticationResponse.Type.TOKEN,
+                        REDIRECT_URI);
+                builder.setScopes(new String[]{"user-read-private", "streaming"});
+                final AuthenticationRequest request = builder.build();
+                //AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+            }
+        });
 
+        final AuthenticationRequest request = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI)
+                .setScopes(new String[]{"user-read-private", "playlist-read", "playlist-read-private", "streaming"})
+                .build();
+
+        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+
+        /*
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
                 AuthenticationResponse.Type.TOKEN,
                 REDIRECT_URI);
         builder.setScopes(new String[]{"user-read-private", "streaming"});
         final AuthenticationRequest request = builder.build();
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+        */
+
     }
+
     @Override
     protected void onActivityResult(final int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -205,6 +229,7 @@ public class MainActivity extends Activity implements
         }
 
     }
+
     public String getUri(int position){
         return playListUri.get(position);
     }
@@ -298,4 +323,5 @@ public class MainActivity extends Activity implements
         Spotify.destroyPlayer(this);
         super.onDestroy();
     }
+
 }
